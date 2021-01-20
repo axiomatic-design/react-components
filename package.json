@@ -47,7 +47,7 @@
     "lerna": "^3.22.1",
     "mini-css-extract-plugin": "^0.10.0",
     "prettier": "^2.0.5",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "react-dom": "^16.13.1",
     "rebass": "^4.0.7",
     "rimraf": "^3.0.2",
