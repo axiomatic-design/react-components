@@ -1,6 +1,6 @@
 {
-  "name": "@axiomatic/playground",
-  "version": "1.0.6",
+  "name": "@axiomatic/component-playground",
+  "version": "0.1.0",
   "main": "cjs/index.js",
   "types": "cjs/index.d.ts",
   "scripts": {
@@ -16,14 +16,11 @@
     "prepack": "yarn build"
   },
   "peerDependencies": {
-    "react": ">=16",
-    "react-dom": ">=16"
+    "react": ">=17",
+    "react-dom": ">=17"
   },
   "dependencies": {
-    "@axiomatic/elements": "^1.0.5",
-    "@axiomatic/layout": "^1.0.6",
-    "@axiomatic/primitives": "^1.0.5",
-    "@axiomatic/themes": "^1.0.5"
+    "@axiomatic/react-components": "^0.1.0"
   },
   "files": [
     "cjs",
@@ -31,7 +28,7 @@
     "src"
   ],
   "license": "MIT",
-  "repository": "git@github.com:cwlsn/axiomatic-next.git",
+  "repository": "git@github.com:axiomatic-design/react-components.git",
   "private": false,
   "publishConfig": {
     "access": "public"

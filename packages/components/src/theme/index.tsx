@@ -3,14 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import { ThemeProvider } from 'emotion-theming';
 import reset from 'styled-reset';
 import { Helmet } from 'react-helmet';
-import {
-  borders,
-  colors,
-  radii,
-  shadows,
-  spacing as space,
-  typography,
-} from '@axiomatic/tokens';
+import { borders, colors, radii, shadows, space, typography } from './tokens';
 
 import { text } from './text';
 import { buttons } from './buttons';
