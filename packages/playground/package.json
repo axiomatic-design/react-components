@@ -1,0 +1,39 @@
+{
+  "name": "@axiomatic/playground",
+  "version": "1.0.6",
+  "main": "cjs/index.js",
+  "types": "cjs/index.d.ts",
+  "scripts": {
+    "clean": "rimraf ./cjs ./umd",
+    "prebuild": "yarn clean",
+    "build": "yarn build:cjs && yarn build:umd",
+    "build:cjs": "ts-build ./src --cjs",
+    "build:umd": "yarn bundle:prod",
+    "bundle:prod": "webpack --mode production",
+    "bundle:dev": "webpack --mode development --devtool source-map",
+    "test": "echo \"yum\"",
+    "start": "webpack-dev-server --mode development --progress --open",
+    "prepack": "yarn build"
+  },
+  "peerDependencies": {
+    "react": ">=16",
+    "react-dom": ">=16"
+  },
+  "dependencies": {
+    "@axiomatic/elements": "^1.0.5",
+    "@axiomatic/layout": "^1.0.6",
+    "@axiomatic/primitives": "^1.0.5",
+    "@axiomatic/themes": "^1.0.5"
+  },
+  "files": [
+    "cjs",
+    "umd",
+    "src"
+  ],
+  "license": "MIT",
+  "repository": "git@github.com:cwlsn/axiomatic-next.git",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}
