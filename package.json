@@ -27,7 +27,7 @@
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
     "@ts-tools/build": "^1.2.6",
-    "@ts-tools/webpack-loader": "^1.1.4",
+    "@ts-tools/webpack-loader": "^2.1.1",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/styled-system": "^5.1.10",
