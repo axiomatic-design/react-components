@@ -1,15 +1,19 @@
 import React from 'react';
-import { createGlobalStyle } from 'styled-components';
-import { ThemeProvider } from 'emotion-theming';
-import reset from 'styled-reset';
+import { ThemeProvider, Global, css } from '@emotion/react';
 import { Helmet } from 'react-helmet';
-import { borders, colors, radii, shadows, space, typography } from './tokens';
+import emotionReset from 'emotion-reset';
 
+import { borders, colors, radii, shadows, space, typography } from './tokens';
 import { text } from './text';
 import { buttons } from './buttons';
-import { variants } from './variants';
 
-const { fonts, fontSizes, fontWeights, lineHeights } = typography;
+const {
+  fonts,
+  fontSizes,
+  fontWeights,
+  lineHeights,
+  letterSpacings,
+} = typography;
 
 const theme = {
   borders,
@@ -22,13 +26,9 @@ const theme = {
   fontSizes,
   fontWeights,
   lineHeights,
+  letterSpacings,
   text,
-  variants,
-};
-
-const StyleReset = createGlobalStyle`
-    ${reset}
-`;
+} as const;
 
 function GlobalStyle(): JSX.Element {
   return (
@@ -36,10 +36,33 @@ function GlobalStyle(): JSX.Element {
       <Helmet>
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Volkhov:ital,wght@0,400;0,700;1,700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Alice&display=swap"
         />
       </Helmet>
-      <StyleReset />
+      <Global
+        styles={css`
+          ${emotionReset}
+
+          *, *::after, *::before {
+            box-sizing: border-box;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+          }
+
+          *:focus {
+            outline: 0;
+            box-shadow: 0 0 0 3px ${colors.outline};
+          }
+
+          ::selection {
+            background: ${colors.selection};
+          }
+
+          body {
+            font-family: ${fonts.body};
+          }
+        `}
+      />
     </>
   );
 }
