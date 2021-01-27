@@ -5,6 +5,7 @@ import { Box, Flex } from '../';
 
 interface LogoProps {
   size?: string;
+  icon?: boolean;
 }
 
 const LinkedWrapper = styled(Flex)(
@@ -33,7 +34,7 @@ const WordMark = styled('h1')(
   }),
 );
 
-function Logo({ size = '48px' }: LogoProps): JSX.Element {
+function Logo({ size = '48px', icon }: LogoProps): JSX.Element {
   return (
     <LinkedWrapper alignItems="center" as="a" href="/">
       <LogoContainer size={size}>
@@ -81,7 +82,7 @@ function Logo({ size = '48px' }: LogoProps): JSX.Element {
           </g>
         </svg>
       </LogoContainer>
-      <WordMark>Axiomatic</WordMark>
+      {!icon && <WordMark>Axiomatic</WordMark>}
     </LinkedWrapper>
   );
 }

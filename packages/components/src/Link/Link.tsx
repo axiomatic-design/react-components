@@ -8,7 +8,7 @@ interface LinkProps {
   href: string;
 }
 
-const LinkContainer = styled(Box)(
+const LinkContainer = styled(Box)<LinkProps>(({ sx }) =>
   css({
     color: 'primary',
     transition: 'color 0.2s ease-in-out',
@@ -16,6 +16,7 @@ const LinkContainer = styled(Box)(
     '&:hover': {
       color: 'copy',
     },
+    ...sx,
   }),
 );
 

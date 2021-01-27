@@ -16,7 +16,7 @@ const BadgeContainer = styled(Flex)<BadgeProps>((props) =>
     borderRadius: props.pill ? 'pill' : 'default',
     paddingX: 2,
     paddingY: 1,
-    fontSize: '12px',
+    fontSize: 0,
     fontWeight: 'bold',
     textTransform: 'uppercase',
     letterSpacing: 'tight',

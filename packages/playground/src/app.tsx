@@ -5,16 +5,25 @@ import {
   ThemeProvider,
   Box,
   Flex,
+  ArticlePreview,
   Badge,
   Button,
+  Card,
+  Hero,
   Icon,
+  Image,
   Link,
   Logo,
   Nav,
+  PackagePreview,
   Heading,
+  SubHeading,
   Text,
   Eyebrow,
 } from '@axiomatic/react-components';
+import catImage from './assets/undraw_chilling_8tii.svg';
+import intersect from './assets/intersect.svg';
+import catFace from './assets/cat-face.jpg';
 
 const navItems = [
   {
@@ -44,50 +53,115 @@ export function App(): JSX.Element {
         <Logo />
         <Nav items={navItems} />
       </Flex>
-      <Box as="main" padding={4}>
-        <Box width={480} marginBottom={3}>
-          <Box
-            width={480}
-            justifyContent="space-between"
-            alignItems="center"
-            paddingY={2}
+
+      <Flex>
+        <Hero image={intersect} imagePosition="0 -50px" sx={{ width: 1030 }}>
+          <Heading
+            sx={{
+              color: 'primaryText',
+              fontSize: 7,
+              fontFamily: 'body',
+              fontWeight: 'bold',
+              marginBottom: 4,
+            }}
           >
-            <Eyebrow>Hello eyebrow</Eyebrow>
-            <Heading>Such beautiful typo</Heading>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id
-              suscipit arcu. Cras feugiat dapibus metus, sit amet varius libero
-              gravida in. Donec ut <Link label="and a link!" href="#" /> porta
-              elit, sed pellentesque turpis. Duis consectetur non nisl non
-              aliquam. Ut diam quam, interdum in neque vitae, pharetra mattis
-              orci.
-            </Text>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id
-              suscipit arcu. Cras feugiat dapibus metus, sit amet varius libero
-              gravida in. Donec ut <Link label="and a link!" href="#" /> porta
-              elit, sed pellentesque turpis. Duis consectetur non nisl non
-              aliquam. Ut diam quam, interdum in neque vitae, pharetra mattis
-              orci.
-            </Text>
-          </Box>
-          <Eyebrow>Icons</Eyebrow>
-          <Flex
-            width={480}
-            justifyContent="space-between"
-            alignItems="center"
-            paddingY={2}
+            Design Systems
+          </Heading>
+          <SubHeading
+            sx={{
+              color: 'primaryText',
+              marginBottom: 'auto',
+            }}
           >
-            <Icon name="music" />
-            <Icon name="github" color="primary" />
-            <Icon name="star" />
-            <Icon name="alert-circle" />
-            <Icon name="git-pull-request" />
-            <Icon name="music" color="secondary" size="32px" />
-          </Flex>
+            The intersection of Design, Product, and Enginneering
+          </SubHeading>
+          <SubHeading
+            sx={{
+              color: 'primaryText',
+              display: 'flex',
+            }}
+          >
+            <Link
+              label="Get started with an intro to Design Systems"
+              href="#"
+              sx={{
+                color: 'primaryText',
+                marginRight: 2,
+                transition: 'all 0.2s ease-in-out',
+                '&:hover': {
+                  color: 'primaryTextHover',
+                  marginRight: 3,
+                },
+              }}
+            />{' '}
+            <Icon name="arrow-right" size="24px" />
+          </SubHeading>
+        </Hero>
+
+        <Card marginX={3}>
+          <SubHeading>This is a cat card</SubHeading>
+          <Image src={catImage} alt="issa cat" width={175} margin="auto" />
+          <Text sx={{ fontSize: 1 }}>
+            Stay up to date with the latest articles, packages and updates, and
+            industry news. You can expect one or two updates a month, and we’ll
+            never spam or share your email.
+          </Text>
+          <Button label="Slappa da Like" />
+        </Card>
+      </Flex>
+
+      <Box width={768} marginTop={3} marginBottom={5} marginX="auto">
+        <PackagePreview
+          name="@axiomatic/floop"
+          stars={312}
+          version="v2.2.0"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id
+            suscipit arcu. Cras feugiat dapibus metus, sit amet varius libero
+            gravida in."
+        />
+
+        <ArticlePreview
+          title="What a fun title to have"
+          authorImage={catFace}
+          authorName="Cats McGee"
+          tags={['woop', 'deshloop']}
+          digest="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id
+            suscipit arcu. Cras feugiat dapibus metus, sit amet varius libero
+            gravida in."
+        />
+
+        <Box>
+          <Eyebrow>Hello eyebrow</Eyebrow>
+          <Heading>Such beautiful typo</Heading>
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id
+            suscipit arcu. Cras feugiat dapibus metus, sit amet varius libero
+            gravida in. Donec ut <Link label="and a link!" href="#" /> porta
+            elit, sed pellentesque turpis. Duis consectetur non nisl non
+            aliquam. Ut diam quam, interdum in neque vitae, pharetra mattis
+            orci.
+          </Text>
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id
+            suscipit arcu. Cras feugiat dapibus metus, sit amet varius libero
+            gravida in. Donec ut <Link label="and a link!" href="#" /> porta
+            elit, sed pellentesque turpis. Duis consectetur non nisl non
+            aliquam. Ut diam quam, interdum in neque vitae, pharetra mattis
+            orci.
+          </Text>
         </Box>
-        <Eyebrow>Buttons</Eyebrow>
-        <Flex width={480} justifyContent="space-between" paddingY={2}>
+        <Eyebrow sx={{ paddingY: 3 }}>Icons</Eyebrow>
+        <Flex justifyContent="space-between" alignItems="center">
+          <Icon name="music" />
+          <Icon name="github" color="primary" />
+          <Icon name="star" />
+          <Icon name="alert-circle" />
+          <Icon name="git-pull-request" />
+          <Icon name="music" color="secondary" size="32px" />
+        </Flex>
+
+        <Eyebrow sx={{ paddingY: 3 }}>Buttons</Eyebrow>
+        <Flex justifyContent="space-between">
           <Button
             label="click me"
             onClick={() => {
@@ -117,7 +191,7 @@ export function App(): JSX.Element {
             }}
           />
         </Flex>
-        <Flex width={480} justifyContent="space-between" paddingTop={3}>
+        <Flex justifyContent="space-between" paddingTop={3}>
           <Button
             label="Done"
             icon="check"
@@ -142,8 +216,8 @@ export function App(): JSX.Element {
             }}
           />
         </Flex>
-        <Eyebrow>Badges</Eyebrow>
-        <Flex width={480} justifyContent="space-between" paddingTop={3}>
+        <Eyebrow sx={{ paddingY: 3 }}>Badges</Eyebrow>
+        <Flex justifyContent="space-between">
           <Badge>Component</Badge>
           <Badge pill backgroundColor="navPill" color="navPillText">
             <Icon name="star" size="12px" marginRight={1} />

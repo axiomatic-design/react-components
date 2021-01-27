@@ -22,7 +22,7 @@ const IconContainer = styled(Box)((props) =>
 
 function Icon({ name, size = '18px', color = 'currentColor', ...props }) {
   return (
-    <IconContainer size={size} color={color} {...props}>
+    <IconContainer as="i" size={size} color={color} {...props}>
       <svg
         width={size}
         height={size}

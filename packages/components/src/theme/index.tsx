@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet';
 import emotionReset from 'emotion-reset';
 
 import { borders, colors, radii, shadows, space, typography } from './tokens';
-import { text } from './text';
 import { buttons } from './buttons';
 
 const {
@@ -27,7 +26,6 @@ const theme = {
   fontWeights,
   lineHeights,
   letterSpacings,
-  text,
 } as const;
 
 function GlobalStyle(): JSX.Element {

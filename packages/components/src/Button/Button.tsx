@@ -4,14 +4,18 @@ import css from '@styled-system/css';
 import { Flex } from '../';
 import { Icon } from '../Icon';
 
+type ButtonVariant = 'primary' | 'outline' | 'secondary';
+
 interface ButtonProps {
   label: string;
-  disabled?: boolean;
-  variant?: 'primary' | 'outline' | 'secondary';
+  disabled: boolean;
+  variant?: ButtonVariant;
   icon?: string;
 }
 
 const buttonBase = {
+  appearance: 'none',
+  justifyContent: 'center',
   fontSize: 2,
   border: 0,
   borderRadius: 'default',
@@ -19,6 +23,7 @@ const buttonBase = {
   paddingY: 2,
   cursor: 'pointer',
   transition: 'background 0.2s ease-in-out',
+  fontWeight: 'bold',
 };
 
 const disabledButton = {
@@ -28,7 +33,7 @@ const disabledButton = {
 };
 
 const buttonStyles = {
-  primary: css({
+  primary: {
     ...buttonBase,
     backgroundColor: 'primary',
     color: 'primaryText',
@@ -38,8 +43,8 @@ const buttonStyles = {
     '&:disabled': {
       ...disabledButton,
     },
-  }),
-  outline: css({
+  },
+  outline: {
     ...buttonBase,
     backgroundColor: 'transparent',
     color: 'primary',
@@ -54,10 +59,23 @@ const buttonStyles = {
       color: 'disabledText',
       background: 'transparent',
     },
-  }),
+  },
+  secondary: {
+    ...buttonBase,
+    backgroundColor: 'secondary',
+    color: 'secondaryText',
+    '&:hover': {
+      backgroundColor: 'secondaryHover',
+    },
+    '&:disabled': {
+      ...disabledButton,
+    },
+  },
 };
 
-const ButtonContainer = styled(Flex)(({ variant }) => buttonStyles[variant]);
+const ButtonContainer = styled(Flex)<{ variant: ButtonVariant }>(
+  ({ variant }) => css(buttonStyles[variant]),
+);
 
 const ButtonIcon = styled(Icon)(
   css({
