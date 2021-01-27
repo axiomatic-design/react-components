@@ -39,7 +39,9 @@ function Nav({ items }: NavProps): JSX.Element {
   return (
     <Box as="nav" marginLeft="auto">
       {items.map(({ label, href, active }) => (
-        <NavLink key={label} label={label} href={href} active={active} />
+        <NavLink key={label} href={href} active={active}>
+          {label}
+        </NavLink>
       ))}
     </Box>
   );

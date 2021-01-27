@@ -1,19 +1,19 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import css from '@styled-system/css';
-import { Box } from '../';
+import { Box, BoxProps } from '../';
 
-interface ImageProps {
+interface ImageProps extends BoxProps {
   src: string;
   alt: string;
 }
 
-const ImageWrapper = styled(Box)((sx) =>
+const ImageWrapper = styled(Box)<ImageProps>(
   css({
     maxWidth: '100%',
     height: 'auto',
-    ...sx,
   }),
+  ({ ax }) => css(ax),
 );
 
 function Image({ src, alt, ...props }: ImageProps): JSX.Element {

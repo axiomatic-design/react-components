@@ -1,6 +1,24 @@
-import { Box, Flex, BoxProps } from 'reflexbox';
+import styled from '@emotion/styled';
+import {
+  createShouldForwardProp,
+  props,
+} from '@styled-system/should-forward-prop';
+import { Box as _Box, Flex as _Flex, BoxProps as _BoxProps } from 'reflexbox';
+import type { SystemStyleObject } from '@styled-system/css';
 
-export { Box, Flex, BoxProps };
+export interface BoxProps extends _BoxProps {
+  /** ax prop is passed to styled-system/css for theme aware customizations */
+  ax?: SystemStyleObject;
+  /** This is caused by a conflict between styled-system and React */
+  color?: string;
+}
+
+const shouldForwardProp = createShouldForwardProp([...props, 'ax']);
+
+export const Box = styled(_Box, { shouldForwardProp })``;
+export const Flex = styled(Box)({
+  display: 'flex',
+});
 
 export { ArticlePreview } from './ArticlePreview';
 export type { ArticlePreviewProps } from './ArticlePreview';

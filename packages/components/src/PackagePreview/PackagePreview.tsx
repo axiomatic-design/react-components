@@ -15,15 +15,15 @@ function PackagePreview({
   description,
   stars,
   version,
-  repoLink,
-  docsLink,
-}: PackagePreviewProps): JSX.Element {
+}: // repoLink, TODO: LinkButton
+// docsLink,
+PackagePreviewProps): JSX.Element {
   return (
     <Box marginBottom={3}>
       <Flex>
-        <SubHeading sx={{ marginRight: 'auto' }}>{name}</SubHeading>
+        <SubHeading ax={{ marginRight: 'auto' }}>{name}</SubHeading>
         <Text
-          sx={{
+          ax={{
             fontWeight: 'bold',
             fontSize: 1,
             alignItems: 'center',
@@ -33,7 +33,7 @@ function PackagePreview({
           <Icon name="star" size="16px" /> {stars}
         </Text>
         <Text
-          sx={{
+          ax={{
             fontWeight: 'bold',
             fontSize: 1,
             alignItems: 'center',
@@ -44,14 +44,24 @@ function PackagePreview({
           <Icon name="git-pull-request" size="16px" /> {version}
         </Text>
       </Flex>
-      <Text sx={{ marginBottom: 3 }}>{description}</Text>
+      <Text ax={{ marginBottom: 3 }}>{description}</Text>
       <Flex>
         <Button
           variant="outline"
           label="Documentation"
-          sx={{ marginRight: 1 }}
+          ax={{ marginRight: 1 }}
+          onClick={() => {
+            alert('cats');
+          }}
         />
-        <Button variant="outline" icon="github" label="GitHub" />
+        <Button
+          variant="outline"
+          icon="github"
+          label="GitHub"
+          onClick={() => {
+            alert('cats');
+          }}
+        />
       </Flex>
     </Box>
   );

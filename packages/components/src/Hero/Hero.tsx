@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import css from '@styled-system/css';
-import { Box, Flex } from '../';
+import { Box, Flex, BoxProps } from '../';
 
-interface HeroProps {
+interface HeroProps extends BoxProps {
   image?: string;
   imagePosition?: string;
-  children: JSX.Element[];
+  children: React.ReactNode;
 }
 
-const HeroWrapper = styled(Flex)(({ sx }) =>
+const HeroWrapper = styled(Flex)<HeroProps>(
   css({
     height: 480,
     backgroundColor: 'primary',
@@ -18,8 +18,8 @@ const HeroWrapper = styled(Flex)(({ sx }) =>
     color: 'primaryText',
     position: 'relative',
     flexShrink: 0,
-    ...sx,
   }),
+  ({ ax }) => css(ax),
 );
 
 const ContentWrapper = styled(Flex)(
@@ -36,11 +36,10 @@ function Hero({
   image,
   imagePosition,
   children,
-  sx,
   ...props
 }: HeroProps): JSX.Element {
   return (
-    <HeroWrapper sx={sx}>
+    <HeroWrapper {...props}>
       {image && (
         <Box
           css={{

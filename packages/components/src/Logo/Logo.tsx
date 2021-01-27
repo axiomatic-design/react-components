@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import css from '@styled-system/css';
-import { Box, Flex } from '../';
+import { Box, Link } from '../';
 
 interface LogoProps {
   size?: string;
   icon?: boolean;
 }
 
-const LinkedWrapper = styled(Flex)(
+const LinkedWrapper = styled(Link)(
   css({
     color: 'navLink',
     textDecoration: 'none',

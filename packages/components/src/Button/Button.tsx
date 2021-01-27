@@ -1,30 +1,19 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import css from '@styled-system/css';
-import { Flex } from '../';
+import { BoxProps, Flex } from '../';
 import { Icon } from '../Icon';
+import type { FeatherIconName } from '../Icon/icon-names';
 
 type ButtonVariant = 'primary' | 'outline' | 'secondary';
 
-interface ButtonProps {
-  label: string;
-  disabled: boolean;
+interface ButtonProps extends BoxProps {
+  label?: string;
+  disabled?: boolean;
   variant?: ButtonVariant;
-  icon?: string;
+  icon?: FeatherIconName;
+  onClick: () => void;
 }
-
-const buttonBase = {
-  appearance: 'none',
-  justifyContent: 'center',
-  fontSize: 2,
-  border: 0,
-  borderRadius: 'default',
-  paddingX: 3,
-  paddingY: 2,
-  cursor: 'pointer',
-  transition: 'background 0.2s ease-in-out',
-  fontWeight: 'bold',
-};
 
 const disabledButton = {
   backgroundColor: 'disabled',
@@ -34,7 +23,6 @@ const disabledButton = {
 
 const buttonStyles = {
   primary: {
-    ...buttonBase,
     backgroundColor: 'primary',
     color: 'primaryText',
     '&:hover': {
@@ -45,7 +33,6 @@ const buttonStyles = {
     },
   },
   outline: {
-    ...buttonBase,
     backgroundColor: 'transparent',
     color: 'primary',
     border: 'default',
@@ -61,7 +48,6 @@ const buttonStyles = {
     },
   },
   secondary: {
-    ...buttonBase,
     backgroundColor: 'secondary',
     color: 'secondaryText',
     '&:hover': {
@@ -73,8 +59,21 @@ const buttonStyles = {
   },
 };
 
-const ButtonContainer = styled(Flex)<{ variant: ButtonVariant }>(
-  ({ variant }) => css(buttonStyles[variant]),
+const ButtonContainer = styled(Flex)<ButtonProps>(
+  css({
+    appearance: 'none',
+    justifyContent: 'center',
+    fontSize: 2,
+    border: 0,
+    borderRadius: 'default',
+    paddingX: 3,
+    paddingY: 2,
+    cursor: 'pointer',
+    transition: 'background 0.2s ease-in-out',
+    fontWeight: 'bold',
+  }),
+  ({ variant }) => variant && css({ ...buttonStyles[variant] }),
+  ({ ax }) => css(ax),
 );
 
 const ButtonIcon = styled(Icon)(

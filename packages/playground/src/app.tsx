@@ -55,9 +55,9 @@ export function App(): JSX.Element {
       </Flex>
 
       <Flex>
-        <Hero image={intersect} imagePosition="0 -50px" sx={{ width: 1030 }}>
+        <Hero image={intersect} imagePosition="0 -50px" ax={{ width: 1030 }}>
           <Heading
-            sx={{
+            ax={{
               color: 'primaryText',
               fontSize: 7,
               fontFamily: 'body',
@@ -68,7 +68,7 @@ export function App(): JSX.Element {
             Design Systems
           </Heading>
           <SubHeading
-            sx={{
+            ax={{
               color: 'primaryText',
               marginBottom: 'auto',
             }}
@@ -76,15 +76,14 @@ export function App(): JSX.Element {
             The intersection of Design, Product, and Enginneering
           </SubHeading>
           <SubHeading
-            sx={{
+            ax={{
               color: 'primaryText',
               display: 'flex',
             }}
           >
             <Link
-              label="Get started with an intro to Design Systems"
               href="#"
-              sx={{
+              ax={{
                 color: 'primaryText',
                 marginRight: 2,
                 transition: 'all 0.2s ease-in-out',
@@ -93,7 +92,9 @@ export function App(): JSX.Element {
                   marginRight: 3,
                 },
               }}
-            />{' '}
+            >
+              Get started with an intro to Design Systems
+            </Link>{' '}
             <Icon name="arrow-right" size="24px" />
           </SubHeading>
         </Hero>
@@ -101,12 +102,17 @@ export function App(): JSX.Element {
         <Card marginX={3}>
           <SubHeading>This is a cat card</SubHeading>
           <Image src={catImage} alt="issa cat" width={175} margin="auto" />
-          <Text sx={{ fontSize: 1 }}>
+          <Text ax={{ fontSize: 1 }}>
             Stay up to date with the latest articles, packages and updates, and
             industry news. You can expect one or two updates a month, and we’ll
             never spam or share your email.
           </Text>
-          <Button label="Slappa da Like" />
+          <Button
+            label="Slappa da Like"
+            onClick={() => {
+              alert('cats');
+            }}
+          />
         </Card>
       </Flex>
 
@@ -115,6 +121,8 @@ export function App(): JSX.Element {
           name="@axiomatic/floop"
           stars={312}
           version="v2.2.0"
+          repoLink="#"
+          docsLink="#"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id
             suscipit arcu. Cras feugiat dapibus metus, sit amet varius libero
             gravida in."
@@ -136,21 +144,19 @@ export function App(): JSX.Element {
           <Text>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id
             suscipit arcu. Cras feugiat dapibus metus, sit amet varius libero
-            gravida in. Donec ut <Link label="and a link!" href="#" /> porta
-            elit, sed pellentesque turpis. Duis consectetur non nisl non
-            aliquam. Ut diam quam, interdum in neque vitae, pharetra mattis
-            orci.
+            gravida in. Donec ut <Link href="#">and a link</Link> porta elit,
+            sed pellentesque turpis. Duis consectetur non nisl non aliquam. Ut
+            diam quam, interdum in neque vitae, pharetra mattis orci.
           </Text>
           <Text>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id
             suscipit arcu. Cras feugiat dapibus metus, sit amet varius libero
-            gravida in. Donec ut <Link label="and a link!" href="#" /> porta
-            elit, sed pellentesque turpis. Duis consectetur non nisl non
-            aliquam. Ut diam quam, interdum in neque vitae, pharetra mattis
-            orci.
+            gravida in. Donec ut <Link href="#">and a link</Link> porta elit,
+            sed pellentesque turpis. Duis consectetur non nisl non aliquam. Ut
+            diam quam, interdum in neque vitae, pharetra mattis orci.
           </Text>
         </Box>
-        <Eyebrow sx={{ paddingY: 3 }}>Icons</Eyebrow>
+        <Eyebrow ax={{ paddingY: 3 }}>Icons</Eyebrow>
         <Flex justifyContent="space-between" alignItems="center">
           <Icon name="music" />
           <Icon name="github" color="primary" />
@@ -160,7 +166,7 @@ export function App(): JSX.Element {
           <Icon name="music" color="secondary" size="32px" />
         </Flex>
 
-        <Eyebrow sx={{ paddingY: 3 }}>Buttons</Eyebrow>
+        <Eyebrow ax={{ paddingY: 3 }}>Buttons</Eyebrow>
         <Flex justifyContent="space-between">
           <Button
             label="click me"
@@ -216,7 +222,7 @@ export function App(): JSX.Element {
             }}
           />
         </Flex>
-        <Eyebrow sx={{ paddingY: 3 }}>Badges</Eyebrow>
+        <Eyebrow ax={{ paddingY: 3 }}>Badges</Eyebrow>
         <Flex justifyContent="space-between">
           <Badge>Component</Badge>
           <Badge pill backgroundColor="navPill" color="navPillText">

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Flex, Heading, Text, Image, Badge, Link } from '../';
+import { Box, Flex, Heading, Text, Image, Badge, Link, BoxProps } from '../';
 
-interface ArticlePreviewProps {
+interface ArticlePreviewProps extends BoxProps {
   title: string;
   authorName: string;
   authorImage?: string;
@@ -18,12 +18,12 @@ function ArticlePreview({
 }: ArticlePreviewProps): JSX.Element {
   return (
     <Box marginBottom={3}>
-      <Heading sx={{ marginBottom: 1 }}>{title}</Heading>
+      <Heading ax={{ marginBottom: 1 }}>{title}</Heading>
       <Flex alignItems="center" marginBottom={2}>
         {authorImage && (
           <Image
             src={authorImage}
-            sx={{
+            ax={{
               width: 32,
               height: 32,
               borderRadius: 'pill',
@@ -31,10 +31,11 @@ function ArticlePreview({
               marginRight: 2,
               backgroundColor: 'imagePlaceholder',
             }}
+            alt={`Photo of ${authorName}`}
           />
         )}
         <Text
-          sx={{
+          ax={{
             fontSize: 1,
             color: 'byline',
             lineHeight: 1,
@@ -45,16 +46,16 @@ function ArticlePreview({
           {authorName}
         </Text>
         {tags.map((tag) => (
-          <Badge sx={{ marginRight: 1 }}>{tag}</Badge>
+          <Badge key={tag} ax={{ marginRight: 1 }}>
+            {tag}
+          </Badge>
         ))}
       </Flex>
       <Text>{digest}</Text>
       <Text>
-        <Link
-          href="#"
-          label="Read more"
-          sx={{ fontWeight: 'bold', textDecoration: 'none' }}
-        />
+        <Link href="#" ax={{ fontWeight: 'bold', textDecoration: 'none' }}>
+          Read more
+        </Link>
       </Text>
     </Box>
   );

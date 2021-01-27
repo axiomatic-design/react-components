@@ -3,21 +3,25 @@ import styled from '@emotion/styled';
 import css from '@styled-system/css';
 import { Box, BoxProps } from '../';
 
-const TextWrapper = styled(Box)(({ sx }) =>
+interface TextProps extends BoxProps {
+  children: React.ReactNode;
+}
+
+const TextWrapper = styled(Box)<TextProps>(
   css({
     color: 'copy',
     lineHeight: 'body',
     fontSize: 2,
     marginBottom: 4,
-    ...sx,
   }),
+  ({ ax }) => css(ax),
 );
 
-function Text({ ...props }: BoxProps): JSX.Element {
+function Text({ ...props }: TextProps): JSX.Element {
   return <TextWrapper as="p" {...props} />;
 }
 
-const HeadingWrapper = styled(Box)(({ sx }) =>
+const HeadingWrapper = styled(Box)<TextProps>(
   css({
     fontFamily: 'heading',
     letterSpacing: 'tight',
@@ -25,41 +29,41 @@ const HeadingWrapper = styled(Box)(({ sx }) =>
     fontSize: 4,
     lineHeight: 'headings',
     marginBottom: 3,
-    ...sx,
   }),
+  ({ ax }) => css(ax),
 );
 
-function Heading({ ...props }: BoxProps): JSX.Element {
+function Heading({ ...props }: TextProps): JSX.Element {
   return <HeadingWrapper as="h2" {...props} />;
 }
 
-const SubHeadingWrapper = styled(Box)(({ sx }) =>
+const SubHeadingWrapper = styled(Box)<TextProps>(
   css({
     fontFamily: 'body',
     fontWeight: 'bold',
     fontSize: 3,
     marginBottom: 3,
     color: 'headings',
-    ...sx,
   }),
+  ({ ax }) => css(ax),
 );
 
-function SubHeading({ ...props }: BoxProps): JSX.Element {
+function SubHeading({ ...props }: TextProps): JSX.Element {
   return <SubHeadingWrapper as="h3" {...props} />;
 }
 
-const EyebrowWrapper = styled('h4')(({ sx }) =>
+const EyebrowWrapper = styled('h4')<TextProps>(
   css({
     letterSpacing: 'tight',
     color: 'eyebrow',
     textTransform: 'uppercase',
     fontWeight: 'bold',
     fontSize: 2,
-    ...sx,
   }),
+  ({ ax }) => css(ax),
 );
 
-function Eyebrow({ ...props }: BoxProps): JSX.Element {
+function Eyebrow({ ...props }: TextProps): JSX.Element {
   return <EyebrowWrapper as="h4" {...props} />;
 }
 
