@@ -1,11 +1,12 @@
 import React from 'react';
-import { SubHeading, Text, Box, Flex, Icon, Button } from '../';
+import { SubHeading, Text, Box, Flex, Icon, Button, Link } from '../';
 
 interface PackagePreviewProps {
   name: string;
   description: string;
   stars: number;
   version: string;
+  link: string;
   repoLink: string;
   docsLink: string;
 }
@@ -15,19 +16,32 @@ function PackagePreview({
   description,
   stars,
   version,
+  link,
 }: // repoLink, TODO: LinkButton
 // docsLink,
 PackagePreviewProps): JSX.Element {
   return (
     <Box marginBottom={3}>
       <Flex>
-        <SubHeading ax={{ marginRight: 'auto' }}>{name}</SubHeading>
+        <Link
+          href={link}
+          ax={{
+            textDecoration: 'none',
+            color: 'headings',
+            '&:hover': {
+              color: 'primary',
+            },
+          }}
+        >
+          <SubHeading ax={{ color: 'unset' }}>{name}</SubHeading>
+        </Link>
         <Text
           ax={{
             fontWeight: 'bold',
             fontSize: 1,
             alignItems: 'center',
             margin: 0,
+            marginLeft: 'auto',
           }}
         >
           <Icon name="star" size="16px" /> {stars}
@@ -49,14 +63,14 @@ PackagePreviewProps): JSX.Element {
         <Button
           variant="outline"
           label="Documentation"
-          ax={{ marginRight: 1 }}
+          ax={{ marginRight: 2 }}
           onClick={() => {
             alert('cats');
           }}
         />
         <Button
           variant="outline"
-          icon="github"
+          iconLeft="github"
           label="GitHub"
           onClick={() => {
             alert('cats');

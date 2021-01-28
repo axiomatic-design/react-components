@@ -7,6 +7,7 @@ interface ArticlePreviewProps extends BoxProps {
   authorImage?: string;
   tags: string[];
   digest: string;
+  link: string;
 }
 
 function ArticlePreview({
@@ -15,10 +16,13 @@ function ArticlePreview({
   authorImage,
   tags,
   digest,
+  link,
 }: ArticlePreviewProps): JSX.Element {
   return (
     <Box marginBottom={3}>
-      <Heading ax={{ marginBottom: 1 }}>{title}</Heading>
+      <Link href={link} ax={{ textDecoration: 'none', color: 'headings' }}>
+        <Heading ax={{ marginBottom: 1, color: 'unset' }}>{title}</Heading>
+      </Link>
       <Flex alignItems="center" marginBottom={2}>
         {authorImage && (
           <Image

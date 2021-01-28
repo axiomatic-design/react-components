@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import css from '@styled-system/css';
 import { BoxProps, Flex } from '../';
 import { Icon } from '../Icon';
 import type { FeatherIconName } from '../Icon/icon-names';
@@ -11,7 +9,8 @@ interface ButtonProps extends BoxProps {
   label?: string;
   disabled?: boolean;
   variant?: ButtonVariant;
-  icon?: FeatherIconName;
+  iconLeft?: FeatherIconName;
+  iconRight?: FeatherIconName;
   onClick: () => void;
 }
 
@@ -59,47 +58,36 @@ const buttonStyles = {
   },
 };
 
-const ButtonContainer = styled(Flex)<ButtonProps>(
-  css({
-    appearance: 'none',
-    justifyContent: 'center',
-    fontSize: 2,
-    border: 0,
-    borderRadius: 'default',
-    paddingX: 3,
-    paddingY: 2,
-    cursor: 'pointer',
-    transition: 'background 0.2s ease-in-out',
-    fontWeight: 'bold',
-  }),
-  ({ variant }) => variant && css({ ...buttonStyles[variant] }),
-  ({ ax }) => css(ax),
-);
-
-const ButtonIcon = styled(Icon)(
-  css({
-    marginRight: 1,
-  }),
-);
-
 function Button({
   label,
-  disabled,
   variant = 'primary',
-  icon,
+  iconLeft,
+  iconRight,
   ...props
 }: ButtonProps): JSX.Element {
   return (
-    <ButtonContainer
+    <Flex
       as="button"
-      disabled={disabled}
-      variant={variant}
-      alignItems="center"
       {...props}
+      base={{
+        appearance: 'none',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontSize: 2,
+        border: 0,
+        borderRadius: 'default',
+        paddingX: 3,
+        paddingY: 2,
+        cursor: 'pointer',
+        transition: 'background 0.2s ease-in-out',
+        fontWeight: 'bold',
+        ...buttonStyles[variant],
+      }}
     >
-      {icon && <ButtonIcon name={icon} />}
+      {iconLeft && <Icon name={iconLeft} ax={{ marginRight: 2 }} />}
       {label}
-    </ButtonContainer>
+      {iconRight && <Icon name={iconRight} ax={{ marginLeft: 2 }} />}
+    </Flex>
   );
 }
 

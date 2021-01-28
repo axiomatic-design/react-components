@@ -37,11 +37,37 @@ const NavLink = styled(Link)<{ active?: boolean }>(({ active }) =>
 
 function Nav({ items }: NavProps): JSX.Element {
   return (
-    <Box as="nav" marginLeft="auto">
+    <Box
+      as="nav"
+      ax={{
+        marginLeft: 'auto',
+      }}
+    >
       {items.map(({ label, href, active }) => (
-        <NavLink key={label} href={href} active={active}>
+        <Link
+          key={label}
+          href={href}
+          ax={{
+            color: 'navLink',
+            marginLeft: 4,
+            textDecoration: 'none',
+            position: 'relative',
+            '&::after': active
+              ? {
+                  content: '""',
+                  position: 'absolute',
+                  bottom: '-8px',
+                  left: '-2px',
+                  right: '-2px',
+                  height: '3px',
+                  backgroundColor: 'primary',
+                  borderRadius: '3px',
+                }
+              : {},
+          }}
+        >
           {label}
-        </NavLink>
+        </Link>
       ))}
     </Box>
   );

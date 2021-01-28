@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import css from '@styled-system/css';
 import { Box, BoxProps } from '../';
 
 interface ImageProps extends BoxProps {
@@ -8,16 +6,10 @@ interface ImageProps extends BoxProps {
   alt: string;
 }
 
-const ImageWrapper = styled(Box)<ImageProps>(
-  css({
-    maxWidth: '100%',
-    height: 'auto',
-  }),
-  ({ ax }) => css(ax),
-);
-
-function Image({ src, alt, ...props }: ImageProps): JSX.Element {
-  return <ImageWrapper as="img" src={src} alt={alt} {...props} />;
+function Image({ ...props }: ImageProps): JSX.Element {
+  return (
+    <Box as="img" {...props} base={{ maxWidth: '100%', height: 'auto' }} />
+  );
 }
 
 export { Image, ImageProps };

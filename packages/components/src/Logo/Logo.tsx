@@ -1,43 +1,26 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import css from '@styled-system/css';
-import { Box, Link } from '../';
+import { Box, Link, Heading } from '../';
 
 interface LogoProps {
   size?: string;
-  icon?: boolean;
+  iconOnly?: boolean;
 }
 
-const LinkedWrapper = styled(Link)(
-  css({
-    color: 'navLink',
-    textDecoration: 'none',
-  }),
-);
-
-const LogoContainer = styled(Box)<{ size?: string }>`
-  width: ${({ size }) => size};
-  height: ${({ size }) => size};
-
-  svg {
-    width: ${({ size }) => size};
-    height: ${({ size }) => size};
-  }
-`;
-
-const WordMark = styled('h1')(
-  css({
-    fontFamily: 'heading',
-    fontSize: 4,
-    marginLeft: 3,
-    letterSpacing: 'tight',
-  }),
-);
-
-function Logo({ size = '48px', icon }: LogoProps): JSX.Element {
+function Logo({ size = '48px', iconOnly }: LogoProps): JSX.Element {
   return (
-    <LinkedWrapper alignItems="center" as="a" href="/">
-      <LogoContainer size={size}>
+    <Link
+      href="/"
+      ax={{
+        display: 'flex',
+        alignItems: 'center',
+        color: 'navLink',
+        textDecoration: 'none',
+        '&:hover': {
+          color: 'primary',
+        },
+      }}
+    >
+      <Box ax={{ width: size, height: size }}>
         <svg
           viewBox="0 0 128 128"
           fill="none"
@@ -81,9 +64,23 @@ function Logo({ size = '48px', icon }: LogoProps): JSX.Element {
             />
           </g>
         </svg>
-      </LogoContainer>
-      {!icon && <WordMark>Axiomatic</WordMark>}
-    </LinkedWrapper>
+      </Box>
+      {!iconOnly && (
+        <Heading
+          as="h1"
+          ax={{
+            fontFamily: 'heading',
+            fontSize: 4,
+            margin: 0,
+            marginLeft: 3,
+            letterSpacing: 'tight',
+            color: 'unset',
+          }}
+        >
+          Axiomatic
+        </Heading>
+      )}
+    </Link>
   );
 }
 

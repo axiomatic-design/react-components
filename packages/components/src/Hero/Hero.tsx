@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import css from '@styled-system/css';
 import { Box, Flex, BoxProps } from '../';
 
 interface HeroProps extends BoxProps {
@@ -9,29 +7,6 @@ interface HeroProps extends BoxProps {
   children: React.ReactNode;
 }
 
-const HeroWrapper = styled(Flex)<HeroProps>(
-  css({
-    height: 480,
-    backgroundColor: 'primary',
-    background:
-      'rgba(75, 93, 255, 0.75) linear-gradient(110.25deg, #4B5DFF 25.66%, rgba(75, 93, 255, 0.75) 45.5%)',
-    color: 'primaryText',
-    position: 'relative',
-    flexShrink: 0,
-  }),
-  ({ ax }) => css(ax),
-);
-
-const ContentWrapper = styled(Flex)(
-  css({
-    flexDirection: 'column',
-    padding: 6,
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-  }),
-);
-
 function Hero({
   image,
   imagePosition,
@@ -39,10 +14,21 @@ function Hero({
   ...props
 }: HeroProps): JSX.Element {
   return (
-    <HeroWrapper {...props}>
+    <Flex
+      {...props}
+      base={{
+        height: 480,
+        backgroundColor: 'primary',
+        background:
+          'rgba(75, 93, 255, 0.75) linear-gradient(110.25deg, #4B5DFF 25.66%, rgba(75, 93, 255, 0.75) 45.5%)',
+        color: 'primaryText',
+        position: 'relative',
+        flexShrink: 0,
+      }}
+    >
       {image && (
         <Box
-          css={{
+          ax={{
             position: 'absolute',
             top: 0,
             bottom: 0,
@@ -53,8 +39,18 @@ function Hero({
           }}
         />
       )}
-      <ContentWrapper>{children}</ContentWrapper>
-    </HeroWrapper>
+      <Flex
+        base={{
+          flexDirection: 'column',
+          padding: 6,
+          position: 'absolute',
+          width: '100%',
+          height: '100%',
+        }}
+      >
+        {children}
+      </Flex>
+    </Flex>
   );
 }
 
