@@ -7,7 +7,10 @@
   "scripts": {
     "clean": "rimraf ./cjs ./esm",
     "prebuild": "yarn clean",
-    "build": "ts-build ./src --cjs --esm",
+    "copy-images": "yarn copy-images:esm && yarn copy-images:cjs",
+    "copy-images:esm": "copyfiles -f src/Icon/feather-sprite.svg esm/Icon",
+    "copy-images:cjs": "copyfiles -f src/Icon/feather-sprite.svg cjs/Icon",
+    "build": "ts-build ./src --cjs --esm && yarn copy-images",
     "test": "echo \"yum\"",
     "prepack": "yarn build"
   },
@@ -38,7 +41,8 @@
     "@types/color": "^3.0.1",
     "@types/react-helmet": "^6.1.0",
     "@types/reflexbox": "^4.0.2",
-    "@types/styled-system__css": "^5.0.14"
+    "@types/styled-system__css": "^5.0.14",
+    "copyfiles": "^2.4.1"
   },
   "gitHead": "898a785728153be2380f67ec9fb0a67bca0500fb"
 }
