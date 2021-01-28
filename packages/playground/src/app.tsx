@@ -63,6 +63,7 @@ export function App(): JSX.Element {
               fontFamily: 'body',
               fontWeight: 'bold',
               marginBottom: 4,
+              letterSpacing: '-0.033em',
             }}
           >
             Design Systems
@@ -121,6 +122,7 @@ export function App(): JSX.Element {
           name="@axiomatic/floop"
           stars={312}
           version="v2.2.0"
+          link="#"
           repoLink="#"
           docsLink="#"
           description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id
@@ -132,6 +134,7 @@ export function App(): JSX.Element {
           title="What a fun title to have"
           authorImage={catFace}
           authorName="Cats McGee"
+          link="#"
           tags={['woop', 'deshloop']}
           digest="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id
             suscipit arcu. Cras feugiat dapibus metus, sit amet varius libero
@@ -200,14 +203,14 @@ export function App(): JSX.Element {
         <Flex justifyContent="space-between" paddingTop={3}>
           <Button
             label="Done"
-            icon="check"
+            iconLeft="check"
             onClick={() => {
               alert('cats!');
             }}
           />
           <Button
             label="Done"
-            icon="check"
+            iconRight="navigation"
             disabled
             onClick={() => {
               alert('cats!');
@@ -215,7 +218,8 @@ export function App(): JSX.Element {
           />
           <Button
             label="GitHub"
-            icon="github"
+            iconLeft="github"
+            iconRight="pen-tool"
             variant="outline"
             onClick={() => {
               alert('cats!');
@@ -223,13 +227,14 @@ export function App(): JSX.Element {
           />
         </Flex>
         <Eyebrow ax={{ paddingY: 3 }}>Badges</Eyebrow>
-        <Flex justifyContent="space-between">
+        <Flex justifyContent="space-between" alignItems="center">
           <Badge>Component</Badge>
           <Badge pill backgroundColor="navPill" color="navPillText">
             <Icon name="star" size="12px" marginRight={1} />
             1,524
           </Badge>
           <Badge>Component</Badge>
+          <Badge ax={{ padding: 3 }}>Component</Badge>
         </Flex>
       </Box>
     </ThemeProvider>
