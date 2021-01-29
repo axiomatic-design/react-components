@@ -7,14 +7,13 @@
   "scripts": {
     "clean": "rimraf ./cjs ./esm",
     "prebuild": "yarn clean",
-    "copy-images": "yarn copy-images:esm && yarn copy-images:cjs",
-    "copy-images:esm": "copyfiles -f src/Icon/feather-sprite.svg esm/Icon",
-    "copy-images:cjs": "copyfiles -f src/Icon/feather-sprite.svg cjs/Icon",
-    "build": "ts-build ./src --cjs --esm && yarn copy-images",
+    "build": "ts-build ./src --cjs --esm",
     "test": "echo \"yum\"",
     "prepack": "yarn build"
   },
   "peerDependencies": {
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0",
     "react": ">=17"
   },
   "files": [

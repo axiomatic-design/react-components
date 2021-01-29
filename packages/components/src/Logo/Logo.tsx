@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Link, Heading } from '../';
+import { Box, Heading, Flex } from '../';
 
 interface LogoProps {
   size?: string;
@@ -8,10 +8,8 @@ interface LogoProps {
 
 function Logo({ size = '48px', iconOnly }: LogoProps): JSX.Element {
   return (
-    <Link
-      href="/"
+    <Flex
       ax={{
-        display: 'flex',
         alignItems: 'center',
         color: 'navLink',
         textDecoration: 'none',
@@ -80,7 +78,7 @@ function Logo({ size = '48px', iconOnly }: LogoProps): JSX.Element {
           Axiomatic
         </Heading>
       )}
-    </Link>
+    </Flex>
   );
 }
 

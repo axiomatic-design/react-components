@@ -33,4 +33,6 @@ export const colors = {
   cardDefault: accent.alpha(0.25).string(),
   imagePlaceholder: dark.alpha(0.1).string(),
   footer: dark.hex(),
+  footerText: light.hex(),
+  footerSubText: light.alpha(0.75).string(),
 };
