@@ -1,5 +1,5 @@
 import React from 'react';
-import feather from './feather-sprite.svg';
+import feather from 'feather-icons';
 import type { FeatherIconName } from './icon-names';
 import { Box, BoxProps } from '../';
 
@@ -16,19 +16,15 @@ function Icon({
   ...props
 }: IconProps): JSX.Element {
   return (
-    <Box as="i" {...props} base={{ width: size, height: size, color: color }}>
-      <svg
-        width={size}
-        height={size}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <use xlinkHref={`${feather}#${name}`} />
-      </svg>
-    </Box>
+    <Box
+      as="i"
+      {...props}
+      base={{ width: size, height: size, color: color }}
+      dangerouslySetInnerHTML={{
+        // eslint-disable-next-line
+        __html: feather.icons[name].toSvg({ width: size, height: size }),
+      }}
+    />
   );
 }
 
